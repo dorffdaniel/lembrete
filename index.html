@@ -11,6 +11,24 @@
 
 <body>
 
+    <header class="mb-5">
+        <nav class="navbar bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand">Lembrete</a>
+                <form class="d-flex" role="search">
+
+                    <svg onclick="mostrarImpostantes()" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-bell" viewBox="0 0 16 16" id="sino">
+                        <path 
+                            d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6" />
+                    </svg>
+
+
+                </form>
+            </div>
+        </nav>
+    </header >
+
     <div class="container">
 
         <div class="row justify-content-center col-md-6">
@@ -18,10 +36,18 @@
 
             <input class="form-control mt-2" type="text" id="inputLembrete" placeholder="">
             <input class="form-control mt-4" type="date" id="data">
+
+            <div class="form-check mt-4">
+                <input class="form-check-input" type="checkbox" value="1" id="checkImport">
+                <label class="form-check-label" for="checkImport">
+                    importante
+                </label>
+            </div>
+
             <button class="btn btn-primary w-25 mt-2" onclick="cadastrar()">Enivar</button>
 
         </div>
-        
+
         <div class="row justify-content-center col-md-6 mt-5">
             <h3>Lembretes atuais: </h3>
             <ul class="res">
@@ -37,11 +63,28 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">detalhe dia </h5>
+                    <h5 class="modal-title" id="tituloDetalhe"></h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body" id="resData">
-                    
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <div class="modal" tabindex="-1" id="mostrarModalImport">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">modal importantes</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="lembretesBell">
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
