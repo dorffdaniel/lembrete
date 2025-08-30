@@ -2,26 +2,28 @@ let lembretes = [];
 
 function cadastrar() {
 
-    /*  lembretes.push({
-         if()
-         lembret: $("#inputLembrete").val(),
-         data: $("#data").val()
- 
-     }) */
-
     let lembret = $("#inputLembrete").val()
     let data = $("#data").val()
 
     if (lembret != "" && data != "") {
-        lembretes.push({
-            lembre: lembret,
-            datta: data
-        })
-        $("#inputLembrete").val("")
-        mostrarLembretes();
+
+        let dataFinall = new Date();
+
+        if (new Date(data) < dataFinall) {
+
+            alerta("Erro", "data nao pode ser inferior ao dia de hoje ", "error")
+        } else {
+            lembretes.push({
+                lembre: lembret,
+                datta: data
+            })
+            $("#inputLembrete").val("")
+            mostrarLembretes();
+        }
 
     } else {
-        alert("preencha o lembrete e selecione uma data ")
+        alerta("erro", "preencha o lembrete e selecione uma data ", "error")
+        mostrarLembretes();
     }
 
 
@@ -36,30 +38,18 @@ function mostrarLembretes() {
 
     let msg = "";
 
-    let flag = false;
-    let dataFinal = new Date();
-
-
     lembretes.forEach((e, index) => {
-        console.log(e.datta)
-        if (new Date(e.datta) >= dataFinal ) {
 
-            flag = true;
+        msg += "<li>"
+        msg += `${e.lembre} <button class="btn btn-primary" onclick="detalhes(${index})"> ver </button>`;
 
-            msg += "<li>"
-            msg += `${e.lembre} <button class="btn btn-primary" onclick="detalhes(${index})"> ver </button>`;
+        msg += "</li>"
 
-            msg += "</li>"
-
-        }
 
     })
 
-    if(!flag){
-        alert("data nao pode ser inferior ao dia de hoje ")
-    }
 
-     res.html(msg);    
+    res.html(msg);
 
 
 }
@@ -74,3 +64,14 @@ function detalhes(dado) {
     $("#resData").html(guard.datta)
 
 }
+
+
+function alerta(titulo, msg, icon) {
+
+    Swal.fire({
+        title: titulo,
+        text: msg,
+        icon: icon
+    });
+
+}   
