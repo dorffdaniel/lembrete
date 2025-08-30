@@ -114,7 +114,27 @@ function mostrarImpostantes() {
 }
 
 
+function addData(ele) {
+    let diaEspec = []
 
+    let txt = '';
+
+    let diaMaes = ele.dataset.maes;
+    let mensagem = "Dia das maes";
+
+    diaEspec.push({
+        dtMaes: diaMaes,
+        msgMaes: mensagem
+    })
+
+    
+    diaEspec.forEach(e =>{
+        txt +=`<li> ${e.msgMaes} </li>`
+    })
+
+    $(".res").html(txt);
+
+}
 
 
 
